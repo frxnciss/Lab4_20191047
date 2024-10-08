@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="app">#45A0ED</color>
+    <color name="backgroung">#47EBDB</color>
+    <color name="backgroungend">#121431</color>
+    <color name="gray">#757474</color>
 </resources>

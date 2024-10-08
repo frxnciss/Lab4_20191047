@@ -28,15 +28,15 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".LigasFragment"
+            android:name=".Fragment.LigasFragment"
             android:exported="false">
         </activity>
         <activity
-            android:name=".PosicionesFragment"
+            android:name=".Fragment.PosicionesFragment"
             android:exported="false">
         </activity>
         <activity
-            android:name=".ResultadosFragment"
+            android:name=".Fragment.ResultadosFragment"
             android:exported="false">
         </activity>
     </application>

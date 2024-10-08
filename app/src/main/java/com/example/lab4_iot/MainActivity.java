@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (networkInfo.isConnected()) {
             Button enterButton = findViewById(R.id.enterButton);
             enterButton.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity.this, LigasActivity.class);
+                Intent intent = new Intent(MainActivity.this, AppActivity.class);
                 startActivity(intent);
             });
         }
