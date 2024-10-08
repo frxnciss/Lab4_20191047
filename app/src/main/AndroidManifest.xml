@@ -23,6 +23,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LigasActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".LigasFragment"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".PosicionesFragment"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ResultadosFragment"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
