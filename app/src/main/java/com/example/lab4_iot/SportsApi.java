@@ -11,4 +11,6 @@ public interface SportsApi {
 
     @GET("search_all_leagues.php")
     Call<ListsDTO> getLeaguesByCountry(@Query("c") String country);
+    @GET("lookuptable.php")
+    Call<ListsDTO> getPosiciones(@Query("l") String idLiga, @Query("s") String temporada);
 }
