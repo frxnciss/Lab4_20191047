@@ -29,7 +29,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
+//Se utilizo AI para conccer como estructurar el comportamiento con el if manejando todas las opciones.
 
 public class LigasFragment extends Fragment {
 

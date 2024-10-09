@@ -28,6 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+//Se utilizo AI para conccer como estructurar el comportamiento con el if manejando todas las opciones.
 public class PosicionesFragment extends Fragment {
 
     private FragmentPosicionesBinding binding;
@@ -43,7 +44,7 @@ public class PosicionesFragment extends Fragment {
         adapter = new PosicionesAdapters(posicionesList, getContext());
         recyclerView.setAdapter(adapter);
 
-        // Botón para buscar posiciones
+
         binding.buscarButton.setOnClickListener(v -> {
             String idLiga = binding.buscarIdLiga.getText().toString().trim();
             String temporada = binding.season.getText().toString().trim();
@@ -58,7 +59,6 @@ public class PosicionesFragment extends Fragment {
         return binding.getRoot();
     }
 
-    // Método para obtener las posiciones de la API
     private void obtenerPosiciones(String idLiga, String temporada) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.thesportsdb.com/api/v1/json/3/")
