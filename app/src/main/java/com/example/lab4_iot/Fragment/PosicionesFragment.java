@@ -1,5 +1,8 @@
 package com.example.lab4_iot.Fragment;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -34,11 +37,17 @@ public class PosicionesFragment extends Fragment {
     private FragmentPosicionesBinding binding;
     private PosicionesAdapters adapter;
     private List<Posiciones> posicionesList = new ArrayList<>();
-
+    private static final float ACCELERATION_THRESHOLD = 20.0f;
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentPosicionesBinding.inflate(inflater, container, false);
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager != null) {
+            accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
 
+        binding = FragmentPosicionesBinding.inflate(inflater, container, false);
         RecyclerView recyclerView = binding.recyclerViewPosiciones;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new PosicionesAdapters(posicionesList, getContext());
@@ -58,6 +67,7 @@ public class PosicionesFragment extends Fragment {
 
         return binding.getRoot();
     }
+
 
     private void obtenerPosiciones(String idLiga, String temporada) {
         Retrofit retrofit = new Retrofit.Builder()

@@ -1,5 +1,8 @@
 package com.example.lab4_iot.Fragment;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -37,16 +40,24 @@ public class LigasFragment extends Fragment {
     private LigasAdapters adapter;
     private List<Ligas> ligasList = new ArrayList<>(); // Lista original de ligas
     private TextInputEditText buscarPais;
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
 
     // Lista de países válidos
     List<String> paisesValidos = Arrays.asList("Spain", "England", "France", "Brazil", "Germany");
-
+    private static final float ACCELERATION_THRESHOLD = 20.0f;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentLigasBinding.inflate(inflater, container, false);
 
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager != null) {
+            accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
+
+
+        binding = FragmentLigasBinding.inflate(inflater, container, false);
 
         RecyclerView recyclerView = binding.recyclerViewLigas;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -70,7 +81,9 @@ public class LigasFragment extends Fragment {
         });
 
         return binding.getRoot();
+
     }
+
 
     // Método para obtener todas las ligas de la API
     private void obtenerTodasLasLigas() {
